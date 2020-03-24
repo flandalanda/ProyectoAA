@@ -1,4 +1,4 @@
-function [x, msg] = mRC1( f, x0, itmax )
+function [x, msg] = mRC2( f, x0, itmax )
 % Trust region method using the  Cauchy  point
 %
 % In :  f     ... (handle) function to be optimized
@@ -15,16 +15,22 @@ msg = "El mínimo fue encontrado de forma exitosa";
 
 iter = 0;
 x = x0;
+n = length(x0);
 delta = deltaMax;
 grad = apGrad(f,x);
 hess = apHess(f,x);
 
 while(norm(grad)>tol && iter <itmax)
     
-    pC = pCauchy(hess,grad,delta);
-    x1 = x + pC;
+    l1 = min(eigs(hess))
+    if l1 <= 0
+        hess = hess + (10^-12-1.125*l1)*eye(n);
+    end
+    
+    dogLeg = pDogLeg(hess,grad,delta);
+    x1 = x + dogLeg;
     df = f(x)-f(x1);
-    dm = -grad'*pC-.5*pC'*hess*pC;
+    dm = -grad'*dogLeg-.5*dogLeg'*hess*dogLeg;
     rho = df/dm;
     
     if rho < .25

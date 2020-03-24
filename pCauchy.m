@@ -9,15 +9,14 @@ normg = norm(g);
 termCuad = g'*B*g;
 
 p = -delta/normg*g;
-disp(p)
 
-tau = 1
+tau = 1;
 
 if termCuad > 0
-    tau = min(normg^3/(delta*termCuad),1)
+    tau = min(normg^3/(delta*termCuad),1);
 end 
 
-pC = tau * p
+pC = tau * p;
 
 end
 

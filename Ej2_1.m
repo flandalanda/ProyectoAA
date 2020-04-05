@@ -1,13 +1,12 @@
+% Script to perform excercise 2.1
 clear;   close all;   clc;
 
 %% Define the Beale function to be evaluated at a vector x
 f = @(x) (1.5 - x(1) + x(1).*x(2)).^2 + (2.25 - x(1) + x(1).*x(2).^2).^2 + (2.625 - x(1) + x(1).*x(2).^3).^2;
 
-
 %% Define point and trust region radius
 x0    = [0;0];
 delta = 1;
-
 
 %% Plot f in cartesian coordinates around x0
 showPlot = true;
@@ -19,7 +18,6 @@ if showPlot
 	Z  = arrayfun(@(x1,x2) f([x1,x2]), X1, X2);
 	s2 = surf(X,Y,Z);
 end
-
 
 %% Plot quadratic model in the trust region with polar coordinates around x0
 hold on

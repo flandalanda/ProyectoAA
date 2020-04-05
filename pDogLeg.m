@@ -21,7 +21,7 @@ if alpha >= const
 else
     % We calculate the Newton step which is the unconstrained minimizer of
     % the quadratic model.
-    pB = -B\g;
+    pB = -B\g
     
     % If the full Newton step remains in the trust region, we take it
     if norm(pB) <= delta
@@ -42,7 +42,7 @@ else
         tau = 0.5*(-b + sqrt(b^2-4*a*c))/a;
         
         % We define our step
-        p = pU + (tau-1)*aux;
+        p = pU + (tau)*aux;
     end
 end
 

@@ -15,12 +15,23 @@ tol = 10^-5;
 deltaMax = 1.5;
 msg = "El mínimo fue encontrado de forma exitosa";
 
+% We initialize an empty matrix that stores the iteration, the distance
+% from the current solution to the know optimum of the Beale function, the
+% norm of the gradient at the current iteration and the value of the
+% objective function at the current iteration in columns 1, 2, 3, and 4
+% respectively
+
+resTable(1:8,1:4)=0;
+
 % Initializing initial aproximations and iteration count
 iter = 0;
 x = x0;
 delta = deltaMax;
 grad = apGrad(f,x);
 hess = apHess(f,x);
+
+% Create first entry in the results table
+resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x)];
 
 % The loop stops when the maximum number of iterations is reached or when
 % we are close enough to a stationary point
@@ -60,6 +71,11 @@ while(norm(grad)>tol && iter <itmax)
     
     % Increase the number of iterations performed
     iter = iter +1;
+    
+    % We update the latest entry in the results table
+    resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x)];
+    
+    
 end
 % Output to console the number of iterations taken
 iter
@@ -68,6 +84,9 @@ iter
 if iter == itmax
     msg = "Se exedió el número de iteraciones permitidas";
 end
+
+% Output to console the results table
+resTable
 
 end
 

@@ -39,7 +39,7 @@ resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x)];
 while(norm(grad)>tol && iter <itmax)
     
     % We obtain the minimum eigenvector of hessian matrix
-    l1 = min(eigs(hess))
+    l1 = min(eigs(hess));
     % If the minimum eigenvector is less than or equal to 0, the matrix is
     % not positve definite and we add a multiple of the identity matrix to
     % make it s.p.d.

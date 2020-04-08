@@ -5,7 +5,7 @@ clear;   close all;   clc;
 f = @(x) (1.5 - x(1) + x(1).*x(2)).^2 + (2.25 - x(1) + x(1).*x(2).^2).^2 + (2.625 - x(1) + x(1).*x(2).^3).^2;
 
 % The quadratic model
-x0=[0;0];
+x0=[2;0];
 B = apHess(f,x0);
 g = apGrad(f,x0);
 m  = @(x,y) f(x0) + g(1).*x + g(2).*y + B(1,1)*x.^2 + B(2,2)*y.^ + 2.*B(1,2).*x.*y;

@@ -21,16 +21,18 @@ end
 
 %% Plot quadratic model in the trust region with polar coordinates around x0
 hold on
-% Polar coordinates arround x0
+% Polar coordinates around x0. X1 and X2 are auxiliar coordinates to evaluate the quadratic model. 
 [T,R] = meshgrid(linspace(0,2*pi,64),linspace(0,delta,16));
-X     = R.*cos(T) +x0(1);
-Y     = R.*sin(T) +x0(2);
+X1 = R.*cos(T);
+X2 = R.*sin(T);
+X = X1 + x0(1);
+Y = X2 + x0(2);
 % The quadratic model
 B = apHess(f,x0);
 g = apGrad(f,x0);
 m  = @(x) f(x0) + g'*x' + x*B*x';
 % Evaluation and plot
-Z  = arrayfun(@(x1,x2) m([x1,x2]), X, Y);
+Z  = arrayfun(@(x1,x2) m([x1,x2]), X1, X2);
 s1 = mesh(X,Y,Z);
 view(130, 15)
 hold off

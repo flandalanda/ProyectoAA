@@ -1,4 +1,4 @@
-function [x, msg] = mRC2( f, x0, itmax )
+function [x, msg, resTable] = mRC2( f, x0, itmax )
 % Trust region method using the  Cauchy  point
 %
 % In :  f     ... (handle) function to be optimized
@@ -98,7 +98,7 @@ if iter == itmax
 end
 
 % Output to console the results table
-resTable
+resTable;
 
 end
 

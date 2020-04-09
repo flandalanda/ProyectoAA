@@ -19,8 +19,8 @@ assert(min(eigs(B)) < 0,'The Hessian approximation is positive definite at this 
 
 %We find the solution using the trust region algorithm that employs the
 %Cauchy point
-[sol1, msg1] = mRC1(f,x0,itermax)
+[sol1, msg1, table1] = mRC1(f,x0,itermax)
 
 %We find the solution using the trust region algorithm that utilizes the
 %dogleg method
-[sol2, msg2] = mRC2(f,x0,itermax)
+[sol2, msg2, table2] = mRC2(f,x0,itermax)

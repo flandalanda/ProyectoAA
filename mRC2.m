@@ -21,7 +21,7 @@ msg = "El mínimo fue encontrado de forma exitosa";
 % objective function at the current iteration in columns 1, 2, 3, and 4
 % respectively
 
-resTable(1:8,1:5)=0;
+resTable(1:8,1:6)=0;
 
 % Initializing initial aproximations and iteration count
 iter = 0;
@@ -32,7 +32,7 @@ grad = apGrad(f,x);
 hess = apHess(f,x);
 
 % Create first entry in the results table
-resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x),x];
+resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x),x(1),x(2)];
 
 % The loop stops when the maximum number of iterations is reached or when
 % we are close enough to a stationary point
@@ -86,7 +86,7 @@ while(norm(grad)>tol && iter <itmax)
     iter = iter +1;
     
     % We update the latest entry in the results table
-    resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x),x];
+    resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x),x(1),x(2)];
 
 end
 % Output to console the number of iterations taken

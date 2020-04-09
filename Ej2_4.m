@@ -27,12 +27,13 @@ Ej2_3
 %Plot Punto Cauchy
 
 Xc = table1(:,5);
-    
-plot(Xc(1),Xc(2),'--d')
+Yc = table1(:,6);
+
+plot(Xc,Yc,'--d')
 hold on    
     
 %Plot Punto DogLeg
 
 Xdl = table2(:,5);
-    
-plot(Xdl(1),Xdl(2),'--d')
+Ydl = table2(:,6);
+plot(Xdl,Ydl,'--d')

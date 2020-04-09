@@ -26,15 +26,13 @@ Ej2_3
 
 %Plot Punto Cauchy
 
-Xc = table1(:,2);
-Yc = table1(:,3);
+Xc = table1(:,5);
     
-plot(Xc,Yc,'--d')
+plot(Xc(1),Xc(2),'--d')
 hold on    
     
 %Plot Punto DogLeg
 
-Xdl = table2(:,2);
-Ydl = table2(:,3);
+Xdl = table2(:,5);
     
-plot(Xdl,Ydl,'--d')
+plot(Xdl(1),Xdl(2),'--d')

@@ -74,7 +74,7 @@ while(norm(grad)>tol && iter <itmax)
     iter = iter +1;
     
     % We update the latest entry in the results table
-    resTable(mod(iter,8)+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x),x(1),x(2)];
+    resTable(iter+1,:) = [iter, norm(x-[3;0.5]),norm(grad),f(x),x(1),x(2)];
     
     
 end

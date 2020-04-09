@@ -29,7 +29,7 @@ Ej2_3
 Xc = table1(:,5);
 Yc = table1(:,6);
 
-plot(Xc,Yc,'--d')
+plot(Xc,Yc,'--rs')
 hold on    
     
 %Plot Punto DogLeg
